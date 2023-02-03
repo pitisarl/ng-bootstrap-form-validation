@@ -7,13 +7,13 @@ import {
   SkipSelf,
   Inject
 } from "@angular/core";
-import { ControlContainer, FormControl } from "@angular/forms";
+import { ControlContainer, UntypedFormControl } from "@angular/forms";
 import { BootstrapVersion } from "../Enums/BootstrapVersion";
 import { BOOTSTRAP_VERSION } from "../Tokens/tokens";
 
 export function controlPath(name: string, parent: ControlContainer): string[] {
   // tslint:disable-next-line:no-non-null-assertion
-  return [...parent.path!, name];
+  return [...parent.path, name];
 }
 
 @Directive({
@@ -55,7 +55,7 @@ export class FormControlDirective {
     return controlPath(this.formControlName, this.parent);
   }
 
-  get control(): FormControl {
+  get control(): UntypedFormControl {
     return this.formDirective && this.formDirective.getControl(this);
   }
 
