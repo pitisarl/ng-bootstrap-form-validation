@@ -7,9 +7,9 @@ import {
 } from "@angular/core";
 import {
   AbstractControl,
-  UntypedFormArray,
-  UntypedFormControl,
-  UntypedFormGroup
+  FormArray,
+  FormControl,
+  FormGroup
 } from "@angular/forms";
 
 @Directive({
@@ -18,7 +18,7 @@ import {
 })
 export class FormValidationDirective {
   @Input()
-  formGroup: UntypedFormGroup;
+  formGroup: FormGroup;
   @Output()
   validSubmit = new EventEmitter<any>();
 
@@ -31,13 +31,13 @@ export class FormValidationDirective {
   }
 
   markAsTouchedAndDirty(control: AbstractControl) {
-    if (control instanceof UntypedFormGroup) {
+    if (control instanceof FormGroup) {
       Object.keys(control.controls).forEach(key =>
         this.markAsTouchedAndDirty(control.controls[key])
       );
-    } else if (control instanceof UntypedFormArray) {
+    } else if (control instanceof FormArray) {
       control.controls.forEach(c => this.markAsTouchedAndDirty(c));
-    } else if (control instanceof UntypedFormControl && control.enabled) {
+    } else if (control instanceof FormControl && control.enabled) {
       control.markAsDirty();
       control.markAsTouched();
       control.updateValueAndValidity();

@@ -328,3 +328,7 @@ export class CustomErrorsComponent implements OnInit {
 
 ## Roadmap
 * Add out of the box support for `ng2-validation` validators
+
+Pour l'exécuter localement 
+ng build ng-bootstrap-form-validation
+https://medium.com/@joosep.parts/create-an-angular-14-library-use-it-locally-when-developing-and-publish-the-package-to-npm-689ca2efdea8
