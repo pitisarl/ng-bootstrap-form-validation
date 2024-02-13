@@ -10,9 +10,9 @@ import {
   AfterContentInit
 } from "@angular/core";
 import { FormControlName } from "@angular/forms";
-import { ErrorMessageService } from "../../Services/error-message.service";
+import { ErrorMessageService } from "../../services/error-message.service";
 import { MessagesComponent } from "../messages/messages.component";
-import { ErrorMessage } from "../../Models/error-message";
+import { ErrorMessage } from "../../models/error-message";
 
 @Component({
   // tslint:disable:component-selector
@@ -23,7 +23,7 @@ import { ErrorMessage } from "../../Models/error-message";
   `
 })
 export class FormGroupComponent implements OnInit, AfterContentInit {
-  @ContentChildren(FormControlName, {descendants: true})
+  @ContentChildren(FormControlName, { descendants: true })
   FormControlNames: QueryList<FormControlName>;
 
   @Input()

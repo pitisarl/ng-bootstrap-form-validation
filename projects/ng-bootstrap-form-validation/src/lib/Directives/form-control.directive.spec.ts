@@ -1,5 +1,5 @@
 import { NgForm } from "@angular/forms";
-import { BootstrapVersion } from "../Enums/BootstrapVersion";
+import { BootstrapVersion } from "../enums/BootstrapVersion";
 import { FormControlDirective } from "./form-control.directive";
 
 describe("FormControlDirective", () => {

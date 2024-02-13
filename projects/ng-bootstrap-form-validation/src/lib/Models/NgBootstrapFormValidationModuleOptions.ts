@@ -1,4 +1,4 @@
-import { BootstrapVersion } from "../Enums/BootstrapVersion";
+import { BootstrapVersion } from "../enums/BootstrapVersion";
 import { ErrorMessage } from "./error-message";
 
 export interface NgBootstrapFormValidationModuleOptions {

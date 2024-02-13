@@ -7,11 +7,10 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "esnext",
+    "module": "ES2022",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2015",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -26,6 +25,7 @@
       "ng-bootstrap-form-validation/*": [
         "dist/ng-bootstrap-form-validation/*"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   }
 }
