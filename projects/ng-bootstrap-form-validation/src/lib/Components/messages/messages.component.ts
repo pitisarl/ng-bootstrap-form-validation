@@ -1,6 +1,6 @@
-import { Component, Input, Inject } from "@angular/core";
-import { BootstrapVersion } from "../../../lib/Enums/BootstrapVersion";
-import { BOOTSTRAP_VERSION } from "../../Tokens/tokens";
+import { Component, Inject, Input } from "@angular/core";
+import { BootstrapVersion } from "../../enums/BootstrapVersion";
+import { BOOTSTRAP_VERSION } from "../../tokens/tokens";
 
 @Component({
   selector: "bfv-messages",
@@ -19,8 +19,9 @@ import { BOOTSTRAP_VERSION } from "../../Tokens/tokens";
   ]
 })
 export class MessagesComponent {
-  @Input()
-  public messages = () => [];
+  constructor(
+    @Inject(BOOTSTRAP_VERSION) private bootstrapVersion: BootstrapVersion
+  ) {}
 
   get className() {
     switch (this.bootstrapVersion) {
@@ -31,7 +32,6 @@ export class MessagesComponent {
     }
   }
 
-  constructor(
-    @Inject(BOOTSTRAP_VERSION) private bootstrapVersion: BootstrapVersion
-  ) {}
+  @Input()
+  public messages = () => [];
 }

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BOOTSTRAP_VERSION } from "../../Tokens/tokens";
-import { BootstrapVersion } from "../../Enums/BootstrapVersion";
+import { BOOTSTRAP_VERSION } from "../../tokens/tokens";
+import { BootstrapVersion } from "../../enums/BootstrapVersion";
 import { MessagesComponent } from "./messages.component";
 
 describe("MessagesComponent", () => {

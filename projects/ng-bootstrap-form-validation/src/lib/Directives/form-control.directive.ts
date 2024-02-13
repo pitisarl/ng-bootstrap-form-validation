@@ -8,8 +8,8 @@ import {
   Inject
 } from "@angular/core";
 import { ControlContainer, FormControl } from "@angular/forms";
-import { BootstrapVersion } from "../Enums/BootstrapVersion";
-import { BOOTSTRAP_VERSION } from "../Tokens/tokens";
+import { BootstrapVersion } from "../enums/BootstrapVersion";
+import { BOOTSTRAP_VERSION } from "../tokens/tokens";
 
 export function controlPath(name: string, parent: ControlContainer): string[] {
   // tslint:disable-next-line:no-non-null-assertion

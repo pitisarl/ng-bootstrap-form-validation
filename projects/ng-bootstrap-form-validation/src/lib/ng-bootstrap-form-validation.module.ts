@@ -1,13 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { NgModule, ModuleWithProviders } from "@angular/core";
-import { FormValidationDirective } from "./Directives/form-validation.directive";
-import { MessagesComponent } from "./Components/messages/messages.component";
-import { ErrorMessageService } from "./Services/error-message.service";
-import { CUSTOM_ERROR_MESSAGES, BOOTSTRAP_VERSION } from "./Tokens/tokens";
-import { BootstrapVersion } from "./Enums/BootstrapVersion";
-import { FormGroupComponent } from "./Components/form-group/form-group.component";
-import { NgBootstrapFormValidationModuleOptions } from "./Models/NgBootstrapFormValidationModuleOptions";
-import { FormControlDirective } from "./Directives/form-control.directive";
+import { FormValidationDirective } from "./directives/form-validation.directive";
+import { MessagesComponent } from "./components/messages/messages.component";
+import { ErrorMessageService } from "./services/error-message.service";
+import { CUSTOM_ERROR_MESSAGES, BOOTSTRAP_VERSION } from "./tokens/tokens";
+import { BootstrapVersion } from "./enums/BootstrapVersion";
+import { FormGroupComponent } from "./components/form-group/form-group.component";
+import { NgBootstrapFormValidationModuleOptions } from "./models/NgBootstrapFormValidationModuleOptions";
+import { FormControlDirective } from "./directives/form-control.directive";
 
 @NgModule({
   imports: [CommonModule],

@@ -1,7 +1,7 @@
 import { TestBed, inject } from "@angular/core/testing";
 
 import { ErrorMessageService } from "./error-message.service";
-import { CUSTOM_ERROR_MESSAGES } from "../Tokens/tokens";
+import { CUSTOM_ERROR_MESSAGES } from "../tokens/tokens";
 
 describe("ErrorMessageService", () => {
   const customRequiredErrorMessage = {
