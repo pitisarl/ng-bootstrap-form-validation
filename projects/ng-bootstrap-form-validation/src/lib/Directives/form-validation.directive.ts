@@ -1,9 +1,9 @@
 import {
   Directive,
   EventEmitter,
+  HostListener,
   Input,
-  Output,
-  HostListener
+  Output
 } from "@angular/core";
 import {
   AbstractControl,
@@ -40,7 +40,7 @@ export class FormValidationDirective {
     } else if (control instanceof FormControl && control.enabled) {
       control.markAsDirty();
       control.markAsTouched();
-      control.updateValueAndValidity();
+      //control.updateValueAndValidity();
     }
   }
 }

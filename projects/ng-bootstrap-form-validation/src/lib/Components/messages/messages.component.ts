@@ -1,6 +1,6 @@
 import { Component, Inject, Input } from "@angular/core";
-import { BootstrapVersion } from "../../enums/BootstrapVersion";
 import { BOOTSTRAP_VERSION } from "../../tokens/tokens";
+import { BootstrapVersion } from "../../enums/BootstrapVersion";
 
 @Component({
   selector: "bfv-messages",

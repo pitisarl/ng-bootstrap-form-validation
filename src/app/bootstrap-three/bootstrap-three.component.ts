@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { BootstrapVersion } from "../../../projects/ng-bootstrap-form-validation/src/lib/Enums/BootstrapVersion";
-import { BOOTSTRAP_VERSION } from "../../../projects/ng-bootstrap-form-validation/src/lib/Tokens/tokens";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { BOOTSTRAP_VERSION } from "../../../projects/ng-bootstrap-form-validation/src/lib/tokens/tokens";
+import { BootstrapVersion } from "../../../projects/ng-bootstrap-form-validation/src/lib/enums/BootstrapVersion";
 
 @Component({
   selector: "app-bootstrap-three",
