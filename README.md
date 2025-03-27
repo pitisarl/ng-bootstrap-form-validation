@@ -19,7 +19,7 @@ Check out [the demo](https://third774.github.io/ng-bootstrap-form-validation)!
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
@@ -37,7 +37,8 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 ```
 
 3) Add `NgBootstrapFormValidationModule` to other modules in your application:
@@ -56,7 +57,8 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
     NgBootstrapFormValidationModule
   ]
 })
-export class OtherModule { }
+export class OtherModule {
+}
 ```
 
 **Note:**
@@ -71,13 +73,14 @@ import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
   ],
   imports: [
     ...
-    NgBootstrapFormValidationModule.forRoot(),
+      NgBootstrapFormValidationModule.forRoot(),
     NgBootstrapFormValidationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 ```
 
 ## Basics
@@ -87,6 +90,7 @@ export class AppModule { }
 By default, the validators found on the `Validators` class from `@angular/forms` module are handled for you out of the box. All you need to do is import the module.
 
 ### Usage
+
 ng-bootstrap-form-validation works by using the `form-group` Bootstrap class on your divs as component selector, and projecting the content into a component which handles form validation feedback for you.
 
 The `has-error` and `has-success` classes are automatically added or removed to your `form-group` based on whether or not the input is valid, and is both `touched` and `dirty`.
@@ -98,8 +102,8 @@ Submitting the form will iterate over all controls and mark them as `touched` an
 `basic-example.component.ts`
 
 ```ts
-import {Component, OnInit} from "@angular/core";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-basic-example',
@@ -136,7 +140,9 @@ export class BasicExampleComponent implements OnInit {
 ```
 
 `basic-example.component.html`
+
 ```html
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <form [formGroup]="formGroup" (validSubmit)="onSubmit()">
@@ -160,7 +166,9 @@ export class BasicExampleComponent implements OnInit {
 Note: the `<bfv-messsages></bfv-messages>` component still *must* be placed within the `<div class="form-group">`.
 
 `basic-example.component.html`
+
 ```html
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <form class="form-horizontal" [formGroup]="formGroup" (validSubmit)="onSubmit()">
@@ -192,8 +200,9 @@ Note: the `<bfv-messsages></bfv-messages>` component still *must* be placed with
 You can provide an `ErrorMessage` array via the `CUSTOM_ERROR_MESSAGES` multi-provider in your module to provide custom errors across your module/app. In order for this to be AOT compatable, the function definitions **must** be exported. see below for an example
 
 `custom-errors.ts`
+
 ```ts
-import {ErrorMessage} from "ng-bootstrap-form-validation";
+import { ErrorMessage } from "ng-bootstrap-form-validation";
 
 export const CUSTOM_ERRORS: ErrorMessage[] = [
   {
@@ -215,17 +224,18 @@ export function emailFormat(label: string, error: any): string {
 ```
 
 `app.module.ts`
+
 ```ts
-import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import {
   NgBootstrapFormValidationModule,
   CUSTOM_ERROR_MESSAGES
 } from "ng-bootstrap-form-validation";
-import {AppComponent} from "./app.component";
-import {CUSTOM_ERRORS} from "./custom-errors";
+import { AppComponent } from "./app.component";
+import { CUSTOM_ERRORS } from "./custom-errors";
 
 @NgModule({
   declarations: [
@@ -257,10 +267,11 @@ you can provide custom error messages to a specific control by binding to the
 example above, we can provide a one time custom error message to a specific `.form-group`. Unlike the global custom error messages, these functions do not need to be individually exported.
 
 `custom-error-example.component.ts`
+
 ```ts
-import {Component, OnInit} from "@angular/core";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ErrorMessage} from "../../lib/Models/ErrorMessage";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ErrorMessage } from "../../lib/Models/ErrorMessage";
 
 @Component({
   selector: 'app-custom-errors',
@@ -307,7 +318,9 @@ export class CustomErrorsComponent implements OnInit {
 ```
 
 `custom-error-example.component.html`
+
 ```html
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <form [formGroup]="formGroup" (validSubmit)="onSubmit()">
@@ -327,8 +340,16 @@ export class CustomErrorsComponent implements OnInit {
 ```
 
 ## Roadmap
+
 * Add out of the box support for `ng2-validation` validators
 
-Pour l'exécuter localement 
+Pour l'exécuter localement
 ng build ng-bootstrap-form-validation
 https://medium.com/@joosep.parts/create-an-angular-14-library-use-it-locally-when-developing-and-publish-the-package-to-npm-689ca2efdea8
+
+## pour builder la librairie (voir https://angular.love/the-angular-library-series-building-and-packaging) :
+
+Changer le numéro de la librairie dans le projects/ng-bootstrap-form-validation/package.json
+puis lancer le build et package:
+> npm run package
+

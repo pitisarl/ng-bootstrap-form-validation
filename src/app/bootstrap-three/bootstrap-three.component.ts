@@ -9,9 +9,10 @@ import { BootstrapVersion } from "../../../projects/ng-bootstrap-form-validation
   providers: [
     {
       provide: BOOTSTRAP_VERSION,
-      useValue: BootstrapVersion.Three
-    }
-  ]
+      useValue: BootstrapVersion.Three,
+    },
+  ],
+  standalone: false,
 })
 export class BootstrapThreeComponent implements OnInit, OnDestroy {
   link: HTMLLinkElement;
