@@ -1,13 +1,13 @@
 import {
+  AfterContentInit,
   Component,
-  ContentChildren,
   ContentChild,
+  ContentChildren,
   ElementRef,
   HostBinding,
   Input,
-  QueryList,
   OnInit,
-  AfterContentInit
+  QueryList,
 } from "@angular/core";
 import { FormControlName } from "@angular/forms";
 import { ErrorMessageService } from "../../services/error-message.service";
@@ -20,7 +20,8 @@ import { ErrorMessage } from "../../models/error-message";
   template: `
     <ng-content></ng-content>
     <bfv-messages *ngIf="!messagesBlock" [messages]="messages"></bfv-messages>
-  `
+  `,
+  standalone: false,
 })
 export class FormGroupComponent implements OnInit, AfterContentInit {
   @ContentChildren(FormControlName, { descendants: true })
@@ -31,11 +32,19 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
 
   @Input()
   validationDisabled = false;
+  @ContentChild(MessagesComponent)
+  public messagesBlock: MessagesComponent;
+  private errorMessages: ErrorMessage[];
+
+  constructor(
+    private elRef: ElementRef,
+    private errorMessageService: ErrorMessageService,
+  ) {}
 
   @HostBinding("class.has-error")
   get hasErrors() {
     return (
-      this.FormControlNames.some(c => !c.valid && c.dirty && c.touched) &&
+      this.FormControlNames.some((c) => !c.valid && c.dirty && c.touched) &&
       !this.validationDisabled
     );
   }
@@ -43,23 +52,22 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
   @HostBinding("class.has-success")
   get hasSuccess() {
     return (
-      !this.FormControlNames.some(c => !c.valid) &&
-      this.FormControlNames.some(c => c.dirty && c.touched) &&
+      !this.FormControlNames.some((c) => !c.valid) &&
+      this.FormControlNames.some((c) => c.dirty && c.touched) &&
       !this.validationDisabled
     );
   }
 
-  @ContentChild(MessagesComponent)
-  public messagesBlock: MessagesComponent;
+  get label() {
+    const label = this.elRef.nativeElement.querySelector("label");
+    return label && label.textContent ? label.textContent.trim() : "This field";
+  }
 
-  private errorMessages: ErrorMessage[];
+  get isDirtyAndTouched() {
+    return this.FormControlNames.some((c) => c.dirty && c.touched);
+  }
 
   public messages = () => this.getMessages();
-
-  constructor(
-    private elRef: ElementRef,
-    private errorMessageService: ErrorMessageService
-  ) {}
 
   ngAfterContentInit() {
     if (this.messagesBlock) {
@@ -73,32 +81,23 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
       .reverse();
   }
 
-  get label() {
-    const label = this.elRef.nativeElement.querySelector("label");
-    return label && label.textContent ? label.textContent.trim() : "This field";
-  }
-
-  get isDirtyAndTouched() {
-    return this.FormControlNames.some(c => c.dirty && c.touched);
-  }
-
   private getMessages(): string[] {
     const messages = [];
     if (!this.isDirtyAndTouched || this.validationDisabled) {
       return messages;
     }
 
-    const names = this.FormControlNames.map(f => f.name);
+    const names = this.FormControlNames.map((f) => f.name);
 
     this.FormControlNames.filter(
       (c, i) =>
         !c.valid &&
         !!c.errors &&
         // filter out FormControlNames that share the same name - usually for radio buttons
-        names.indexOf(c.name) === i
-    ).forEach(control => {
-      Object.keys(control.errors).forEach(key => {
-        const error = this.errorMessages.find(err => err.error === key);
+        names.indexOf(c.name) === i,
+    ).forEach((control) => {
+      Object.keys(control.errors).forEach((key) => {
+        const error = this.errorMessages.find((err) => err.error === key);
         if (!error) {
           return;
         }

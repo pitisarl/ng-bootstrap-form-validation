@@ -1,15 +1,16 @@
 import { Component } from "@angular/core";
 import {
-  UntypedFormGroup,
+  UntypedFormArray,
   UntypedFormControl,
+  UntypedFormGroup,
   Validators,
-  UntypedFormArray
 } from "@angular/forms";
 
 @Component({
   selector: "app-bootstrap-four-basic",
   templateUrl: "./bootstrap-four-basic.component.html",
-  styleUrls: ["./bootstrap-four-basic.component.css"]
+  styleUrls: ["./bootstrap-four-basic.component.css"],
+  standalone: false,
 })
 export class BootstrapFourBasicComponent {
   formGroup = new UntypedFormGroup({
@@ -22,11 +23,11 @@ export class BootstrapFourBasicComponent {
     phoneNumbers: new UntypedFormArray([
       new UntypedFormGroup({
         type: new UntypedFormControl("", Validators.required),
-        number: new UntypedFormControl("", Validators.required)
-      })
+        number: new UntypedFormControl("", Validators.required),
+      }),
     ]),
     agreeToTerms: new UntypedFormControl(false, Validators.required),
-    bestPet: new UntypedFormControl(null, Validators.required)
+    bestPet: new UntypedFormControl(null, Validators.required),
   });
 
   handleValidSubmit() {

@@ -15,12 +15,13 @@ import { BootstrapVersion } from "../../enums/BootstrapVersion";
       .valid-feedback {
         display: block;
       }
-    `
-  ]
+    `,
+  ],
+  standalone: false,
 })
 export class MessagesComponent {
   constructor(
-    @Inject(BOOTSTRAP_VERSION) private bootstrapVersion: BootstrapVersion
+    @Inject(BOOTSTRAP_VERSION) private bootstrapVersion: BootstrapVersion,
   ) {}
 
   get className() {

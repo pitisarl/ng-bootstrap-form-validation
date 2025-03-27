@@ -1,11 +1,11 @@
 import {
   Directive,
-  Input,
-  HostBinding,
-  Optional,
   Host,
+  HostBinding,
+  Inject,
+  Input,
+  Optional,
   SkipSelf,
-  Inject
 } from "@angular/core";
 import { ControlContainer, FormControl } from "@angular/forms";
 import { BootstrapVersion } from "../enums/BootstrapVersion";
@@ -17,14 +17,25 @@ export function controlPath(name: string, parent: ControlContainer): string[] {
 }
 
 @Directive({
-  // tslint:disable-next-line:directive-selector
-  selector: ".form-control,.form-check-input,.custom-control-input"
+  selector:
+    ".form-control,.form-check-input,.custom-control-input,.form-select",
+  standalone: false,
 })
 export class FormControlDirective {
   @Input()
   formControlName: string;
   @Input()
   formControl: string;
+
+  constructor(
+    // this value might be null, but we union type it as such until
+    // this issue is resolved: https://github.com/angular/angular/issues/25544
+    @Optional()
+    @Host()
+    @SkipSelf()
+    private parent: ControlContainer,
+    @Inject(BOOTSTRAP_VERSION) private bootstrapVersion: BootstrapVersion,
+  ) {}
 
   @HostBinding("class.is-valid")
   get validClass() {
@@ -66,14 +77,4 @@ export class FormControlDirective {
   get bootstrapFour() {
     return this.bootstrapVersion === BootstrapVersion.Four;
   }
-
-  constructor(
-    // this value might be null, but we union type it as such until
-    // this issue is resolved: https://github.com/angular/angular/issues/25544
-    @Optional()
-    @Host()
-    @SkipSelf()
-    private parent: ControlContainer,
-    @Inject(BOOTSTRAP_VERSION) private bootstrapVersion: BootstrapVersion
-  ) {}
 }

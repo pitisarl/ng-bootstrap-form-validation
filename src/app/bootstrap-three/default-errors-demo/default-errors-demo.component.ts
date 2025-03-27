@@ -1,14 +1,16 @@
 import { Component } from "@angular/core";
 import {
+  UntypedFormControl,
   UntypedFormGroup,
   Validators,
-  UntypedFormControl
 } from "@angular/forms";
 
 @Component({
   selector: "app-default-errors-demo",
   templateUrl: "./default-errors-demo.component.html",
-  styleUrls: ["./default-errors-demo.component.css"]
+  styleUrls: ["./default-errors-demo.component.css"],
+
+  standalone: false,
 })
 export class DefaultErrorsDemoComponent {
   formGroup = new UntypedFormGroup({
@@ -16,7 +18,7 @@ export class DefaultErrorsDemoComponent {
     requiredField: new UntypedFormControl("", Validators.required),
     pattern: new UntypedFormControl("", Validators.pattern(/foobar/)),
     minValue: new UntypedFormControl(0, Validators.min(10)),
-    maxValue: new UntypedFormControl(10, Validators.max(5))
+    maxValue: new UntypedFormControl(10, Validators.max(5)),
   });
 
   handleValidSubmit() {
@@ -26,7 +28,7 @@ export class DefaultErrorsDemoComponent {
   handleReset() {
     this.formGroup.reset({
       minValue: 0,
-      maxValue: 10
+      maxValue: 10,
     });
   }
 }

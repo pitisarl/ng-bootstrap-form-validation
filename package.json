@@ -8,6 +8,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration production",
+    "build_lib": "ng build ng-bootstrap-form-validation",
+    "npm_pack": "cd dist/ng-bootstrap-form-validation && npm pack",
+    "package": "npm run build_lib && npm run npm_pack",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -71,6 +74,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~5.0.1",
     "tslint": "~6.1.0",
-    "typescript": "~5.5.2"
+    "typescript": "~5.7.2"
   }
 }
