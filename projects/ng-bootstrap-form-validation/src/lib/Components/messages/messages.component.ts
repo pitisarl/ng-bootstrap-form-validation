@@ -5,9 +5,9 @@ import { BootstrapVersion } from "../../enums/BootstrapVersion";
 @Component({
   selector: "bfv-messages",
   template: `
-    <span [ngClass]="className" *ngFor="let message of messages()">{{
-      message
-    }}</span>
+    @for (message of messages(); track message) {
+      <span [ngClass]="className">{{ message }}</span>
+    }
   `,
   styles: [
     `

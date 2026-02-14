@@ -19,7 +19,9 @@ import { ErrorMessage } from "../../models/error-message";
   selector: ".form-group",
   template: `
     <ng-content></ng-content>
-    <bfv-messages *ngIf="!messagesBlock" [messages]="messages"></bfv-messages>
+    @if (!messagesBlock) {
+      <bfv-messages [messages]="messages"></bfv-messages>
+    }
   `,
   standalone: false,
 })

@@ -1,6 +1,6 @@
 {
   "name": "ng-bootstrap-form-validation",
-  "version": "20.0.0",
+  "version": "21.0.0",
   "engine": {
     "node": ">=18.13.0"
   },
@@ -8,7 +8,7 @@
     "tslib": "^2.6.2"
   },
   "peerDependencies": {
-    "@angular/common": "^20.1.1",
-    "@angular/core": "^20.1.1"
+    "@angular/common": "^21.1.4",
+    "@angular/core": "^21.1.4"
   }
 }
