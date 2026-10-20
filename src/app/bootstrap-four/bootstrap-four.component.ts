@@ -1,13 +1,19 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 
 @Component({
   selector: "app-bootstrap-four",
   templateUrl: "./bootstrap-four.component.html",
   styleUrls: ["./bootstrap-four.component.css"],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class BootstrapFourComponent implements OnInit, OnDestroy {
-  link: HTMLLinkElement;
+  link!: HTMLLinkElement;
 
   constructor() {}
 

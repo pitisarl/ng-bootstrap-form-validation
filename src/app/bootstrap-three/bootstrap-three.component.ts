@@ -1,4 +1,9 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import { BOOTSTRAP_VERSION } from "../../../projects/ng-bootstrap-form-validation/src/lib/tokens/tokens";
 import { BootstrapVersion } from "../../../projects/ng-bootstrap-form-validation/src/lib/enums/BootstrapVersion";
 
@@ -12,10 +17,11 @@ import { BootstrapVersion } from "../../../projects/ng-bootstrap-form-validation
       useValue: BootstrapVersion.Three,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class BootstrapThreeComponent implements OnInit, OnDestroy {
-  link: HTMLLinkElement;
+  link!: HTMLLinkElement;
 
   constructor() {}
 

@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   ContentChild,
   ContentChildren,
@@ -23,11 +24,12 @@ import { ErrorMessage } from "../../models/error-message";
       <bfv-messages [messages]="messages"></bfv-messages>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class FormGroupComponent implements OnInit, AfterContentInit {
   @ContentChildren(FormControlName, { descendants: true })
-  FormControlNames: QueryList<FormControlName>;
+  FormControlNames!: QueryList<FormControlName>;
 
   @Input()
   customErrorMessages: ErrorMessage[] = [];
@@ -35,8 +37,8 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
   @Input()
   validationDisabled = false;
   @ContentChild(MessagesComponent)
-  public messagesBlock: MessagesComponent;
-  private errorMessages: ErrorMessage[];
+  public messagesBlock?: MessagesComponent;
+  private errorMessages: ErrorMessage[] = [];
 
   constructor(
     private elRef: ElementRef,
@@ -46,16 +48,19 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
   @HostBinding("class.has-error")
   get hasErrors() {
     return (
-      this.FormControlNames.some((c) => !c.valid && c.dirty && c.touched) &&
-      !this.validationDisabled
+      this.FormControlNames.some(
+        (c) => c.valid !== true && c.dirty === true && c.touched === true,
+      ) && !this.validationDisabled
     );
   }
 
   @HostBinding("class.has-success")
   get hasSuccess() {
     return (
-      !this.FormControlNames.some((c) => !c.valid) &&
-      this.FormControlNames.some((c) => c.dirty && c.touched) &&
+      !this.FormControlNames.some((c) => c.valid !== true) &&
+      this.FormControlNames.some(
+        (c) => c.dirty === true && c.touched === true,
+      ) &&
       !this.validationDisabled
     );
   }
@@ -66,7 +71,9 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
   }
 
   get isDirtyAndTouched() {
-    return this.FormControlNames.some((c) => c.dirty && c.touched);
+    return this.FormControlNames.some(
+      (c) => c.dirty === true && c.touched === true,
+    );
   }
 
   public messages = () => this.getMessages();
@@ -84,7 +91,7 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
   }
 
   private getMessages(): string[] {
-    const messages = [];
+    const messages: string[] = [];
     if (!this.isDirtyAndTouched || this.validationDisabled) {
       return messages;
     }
@@ -98,12 +105,14 @@ export class FormGroupComponent implements OnInit, AfterContentInit {
         // filter out FormControlNames that share the same name - usually for radio buttons
         names.indexOf(c.name) === i,
     ).forEach((control) => {
-      Object.keys(control.errors).forEach((key) => {
+      Object.keys(control.errors ?? []).forEach((key) => {
         const error = this.errorMessages.find((err) => err.error === key);
         if (!error) {
           return;
         }
-        messages.push(error.format(this.label, control.errors[key]));
+        if (error.format) {
+          messages.push(error.format(this.label, control.errors?.[key]));
+        }
       });
     });
 

@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "importHelpers": true,
     "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
@@ -16,10 +15,10 @@
     ],
     "paths": {
       "ng-bootstrap-form-validation": [
-        "dist/ng-bootstrap-form-validation"
+        "./dist/ng-bootstrap-form-validation"
       ],
       "ng-bootstrap-form-validation/*": [
-        "dist/ng-bootstrap-form-validation/*"
+        "./dist/ng-bootstrap-form-validation/*"
       ]
     },
     "useDefineForClassFields": false

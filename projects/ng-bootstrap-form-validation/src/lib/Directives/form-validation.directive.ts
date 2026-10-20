@@ -19,7 +19,7 @@ import {
 })
 export class FormValidationDirective {
   @Input()
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
   @Output()
   validSubmit = new EventEmitter<any>();
 

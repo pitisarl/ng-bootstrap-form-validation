@@ -11,9 +11,11 @@ import { ControlContainer, FormControl } from "@angular/forms";
 import { BootstrapVersion } from "../enums/BootstrapVersion";
 import { BOOTSTRAP_VERSION } from "../tokens/tokens";
 
-export function controlPath(name: string, parent: ControlContainer): string[] {
-  // tslint:disable-next-line:no-non-null-assertion
-  return [...parent.path, name];
+export function controlPath(
+  name: string,
+  parent: ControlContainer | null,
+): string[] {
+  return [...(parent?.path ?? []), name];
 }
 
 @Directive({
@@ -23,9 +25,9 @@ export function controlPath(name: string, parent: ControlContainer): string[] {
 })
 export class FormControlDirective {
   @Input()
-  formControlName: string;
+  formControlName!: string;
   @Input()
-  formControl: string;
+  formControl!: string;
 
   constructor(
     // this value might be null, but we union type it as such until
@@ -33,7 +35,7 @@ export class FormControlDirective {
     @Optional()
     @Host()
     @SkipSelf()
-    private parent: ControlContainer,
+    private parent: ControlContainer | null,
     @Inject(BOOTSTRAP_VERSION) private bootstrapVersion: BootstrapVersion,
   ) {}
 

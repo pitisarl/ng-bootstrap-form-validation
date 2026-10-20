@@ -1,4 +1,9 @@
-import { Component, Inject, Input } from "@angular/core";
+import {
+  Component,
+  Inject,
+  Input,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import { BOOTSTRAP_VERSION } from "../../tokens/tokens";
 import { BootstrapVersion } from "../../enums/BootstrapVersion";
 
@@ -17,6 +22,7 @@ import { BootstrapVersion } from "../../enums/BootstrapVersion";
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class MessagesComponent {
@@ -34,5 +40,5 @@ export class MessagesComponent {
   }
 
   @Input()
-  public messages = () => [];
+  public messages: () => string[] = () => [];
 }

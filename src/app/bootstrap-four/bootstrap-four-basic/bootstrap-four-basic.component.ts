@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import {
   UntypedFormArray,
   UntypedFormControl,
@@ -10,6 +10,7 @@ import {
   selector: "app-bootstrap-four-basic",
   templateUrl: "./bootstrap-four-basic.component.html",
   styleUrls: ["./bootstrap-four-basic.component.css"],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class BootstrapFourBasicComponent {
