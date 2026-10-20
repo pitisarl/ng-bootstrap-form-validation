@@ -19,9 +19,9 @@ import { NgBootstrapFormValidationModule } from "../../projects/ng-bootstrap-for
     BootstrapThreeModule,
     BootstrapFourModule,
     RouterModule.forRoot(appRoutes),
-    NgBootstrapFormValidationModule.forRoot()
+    NgBootstrapFormValidationModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

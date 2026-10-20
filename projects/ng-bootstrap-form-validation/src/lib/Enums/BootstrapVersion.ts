@@ -1,4 +1,4 @@
 export enum BootstrapVersion {
   Three,
-  Four
+  Four,
 }

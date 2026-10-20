@@ -15,17 +15,17 @@ describe("FormGroupComponent", () => {
         FormGroupComponent,
         MockComponent({
           selector: "bfv-messages",
-          inputs: ["messages"]
-        })
+          inputs: ["messages"],
+        }),
       ],
       providers: [
         ErrorMessageService,
         {
           provide: CUSTOM_ERROR_MESSAGES,
           useValue: [],
-          multi: true
-        }
-      ]
+          multi: true,
+        },
+      ],
     }).compileComponents();
   }));
 

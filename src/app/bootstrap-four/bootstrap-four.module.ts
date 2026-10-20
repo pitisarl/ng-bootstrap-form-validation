@@ -15,23 +15,23 @@ import { BootstrapVersion } from "../../../projects/ng-bootstrap-form-validation
     NgBootstrapFormValidationModule,
     FormsModule,
     ReactiveFormsModule,
-    BootstrapFourRoutingModule
+    BootstrapFourRoutingModule,
   ],
   declarations: [
     BootstrapFourNavComponent,
     BootstrapFourComponent,
-    BootstrapFourBasicComponent
+    BootstrapFourBasicComponent,
   ],
   exports: [
     BootstrapFourNavComponent,
     BootstrapFourBasicComponent,
-    BootstrapFourComponent
+    BootstrapFourComponent,
   ],
   providers: [
     {
       provide: BOOTSTRAP_VERSION,
-      useValue: BootstrapVersion.Four
-    }
-  ]
+      useValue: BootstrapVersion.Four,
+    },
+  ],
 })
 export class BootstrapFourModule {}

@@ -20,10 +20,10 @@ describe("AppComponent", () => {
         BootstrapThreeModule,
         BootstrapFourModule,
         RouterModule.forRoot(appRoutes),
-        NgBootstrapFormValidationModule.forRoot()
+        NgBootstrapFormValidationModule.forRoot(),
       ],
       declarations: [AppComponent],
-      providers: [{ provide: APP_BASE_HREF, useValue: "/" }]
+      providers: [{ provide: APP_BASE_HREF, useValue: "/" }],
     }).compileComponents();
   }));
 

@@ -6,12 +6,12 @@ import { BootstrapThreeComponent } from "./bootstrap-three.component";
 const bootstrapThreeRoutes: Routes = [
   {
     path: "bootstrap-3",
-    component: BootstrapThreeComponent
-  }
+    component: BootstrapThreeComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(bootstrapThreeRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class BootstrapThreeRoutingModule {}

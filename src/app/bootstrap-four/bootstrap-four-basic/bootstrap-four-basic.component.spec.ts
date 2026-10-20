@@ -13,9 +13,9 @@ describe("BootstrapFourBasicComponent", () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        NgBootstrapFormValidationModule.forRoot()
+        NgBootstrapFormValidationModule.forRoot(),
       ],
-      declarations: [BootstrapFourBasicComponent]
+      declarations: [BootstrapFourBasicComponent],
     }).compileComponents();
   }));
 

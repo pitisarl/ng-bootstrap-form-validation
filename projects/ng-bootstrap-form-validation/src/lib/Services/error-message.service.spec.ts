@@ -6,9 +6,9 @@ import { CUSTOM_ERROR_MESSAGES } from "../tokens/tokens";
 describe("ErrorMessageService", () => {
   const customRequiredErrorMessage = {
     error: "required",
-    format: function(label, error) {
+    format: function (label, error) {
       return `${label} IS DEFINITELY REQUIRED!!!`;
-    }
+    },
   };
 
   beforeEach(() => {
@@ -18,9 +18,9 @@ describe("ErrorMessageService", () => {
         {
           provide: CUSTOM_ERROR_MESSAGES,
           useValue: [customRequiredErrorMessage],
-          multi: true
-        }
-      ]
+          multi: true,
+        },
+      ],
     });
   });
 
@@ -28,7 +28,7 @@ describe("ErrorMessageService", () => {
     [ErrorMessageService],
     (service: ErrorMessageService) => {
       expect(service).toBeTruthy();
-    }
+    },
   ));
 
   describe("errorMessages()", () => {
@@ -36,7 +36,7 @@ describe("ErrorMessageService", () => {
       [ErrorMessageService],
       (service: ErrorMessageService) => {
         expect(service.errorMessages.pop()).toEqual(customRequiredErrorMessage);
-      }
+      },
     ));
   });
 });

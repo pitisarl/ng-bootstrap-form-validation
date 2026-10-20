@@ -5,11 +5,11 @@ export const appRoutes: Routes = [
   {
     path: "bootstrap-4",
     component: BootstrapFourComponent,
-    children: []
+    children: [],
   },
   {
     path: "",
     redirectTo: "bootstrap-3",
-    pathMatch: "full"
-  }
+    pathMatch: "full",
+  },
 ];

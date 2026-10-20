@@ -10,7 +10,7 @@ describe("DefaultErrorsDemoComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule],
-      declarations: [DefaultErrorsDemoComponent]
+      declarations: [DefaultErrorsDemoComponent],
     }).compileComponents();
   }));
 

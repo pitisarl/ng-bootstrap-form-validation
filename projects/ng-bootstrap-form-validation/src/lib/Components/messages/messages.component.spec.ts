@@ -14,9 +14,9 @@ describe("MessagesComponent", () => {
       providers: [
         {
           provide: BOOTSTRAP_VERSION,
-          useValue: BootstrapVersion.Four
-        }
-      ]
+          useValue: BootstrapVersion.Four,
+        },
+      ],
     }).compileComponents();
   }));
 

@@ -15,20 +15,20 @@ import { FormControlDirective } from "./directives/form-control.directive";
     FormValidationDirective,
     FormGroupComponent,
     MessagesComponent,
-    FormControlDirective
+    FormControlDirective,
   ],
   exports: [
     FormValidationDirective,
     FormGroupComponent,
     MessagesComponent,
-    FormControlDirective
-  ]
+    FormControlDirective,
+  ],
 })
 export class NgBootstrapFormValidationModule {
   static forRoot(
     userOptions: NgBootstrapFormValidationModuleOptions = {
-      bootstrapVersion: BootstrapVersion.Four
-    }
+      bootstrapVersion: BootstrapVersion.Four,
+    },
   ): ModuleWithProviders<NgBootstrapFormValidationModule> {
     return {
       ngModule: NgBootstrapFormValidationModule,
@@ -36,14 +36,14 @@ export class NgBootstrapFormValidationModule {
         {
           provide: CUSTOM_ERROR_MESSAGES,
           useValue: userOptions.customErrorMessages || [],
-          multi: true
+          multi: true,
         },
         {
           provide: BOOTSTRAP_VERSION,
-          useValue: userOptions.bootstrapVersion
+          useValue: userOptions.bootstrapVersion,
         },
-        ErrorMessageService
-      ]
+        ErrorMessageService,
+      ],
     };
   }
 }

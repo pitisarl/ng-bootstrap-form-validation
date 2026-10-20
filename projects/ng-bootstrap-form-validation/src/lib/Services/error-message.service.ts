@@ -4,7 +4,7 @@ import { CUSTOM_ERROR_MESSAGES } from "../tokens/tokens";
 import { ErrorMessage } from "../models/error-message";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ErrorMessageService {
   private defaultErrors = DEFAULT_ERRORS;
@@ -12,11 +12,11 @@ export class ErrorMessageService {
   public errorMessages: ErrorMessage[];
 
   constructor(
-    @Inject(CUSTOM_ERROR_MESSAGES) public customErrorMessages: ErrorMessage[][]
+    @Inject(CUSTOM_ERROR_MESSAGES) public customErrorMessages: ErrorMessage[][],
   ) {
     this.errorMessages = customErrorMessages.reduce(
       (acc, cur) => acc.concat(cur),
-      this.defaultErrors
+      this.defaultErrors,
     );
   }
 }

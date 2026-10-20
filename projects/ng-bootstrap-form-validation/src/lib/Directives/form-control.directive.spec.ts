@@ -6,7 +6,7 @@ describe("FormControlDirective", () => {
   it("should create an instance", () => {
     const directive = new FormControlDirective(
       new NgForm([], []),
-      BootstrapVersion.Four
+      BootstrapVersion.Four,
     );
     expect(directive).toBeTruthy();
   });

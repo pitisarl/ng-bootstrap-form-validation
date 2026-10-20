@@ -10,19 +10,19 @@ const routes: Routes = [
     children: [
       {
         path: "basic",
-        component: BootstrapFourBasicComponent
+        component: BootstrapFourBasicComponent,
       },
       {
         path: "",
         redirectTo: "basic",
-        pathMatch: "full"
-      }
-    ]
-  }
+        pathMatch: "full",
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class BootstrapFourRoutingModule {}
